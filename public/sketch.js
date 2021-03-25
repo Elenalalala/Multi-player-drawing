@@ -16,7 +16,7 @@ function setup() {
 
   layer = createGraphics(windowWidth,windowHeight);
 
-  socket = io.connect('http://localhost:3000', {
+  socket = io.connect('https://multi-drawing-tool.herokuapp.com', {
     withCredentials: true,
     extraHeaders: {
       "my-custom-header": "drawingtoolheader"

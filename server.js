@@ -1,5 +1,11 @@
 let express = require('express'); // require returns a function;
 let app = express(); //then we call on this function, which will return all the things express give us, and put then in a variable for further reference.
+let cors = require('cors');
+
+app.get('/products/:id', cors(), function (req, res, next) {
+    res.json({msg: 'This is CORS-enabled for a Single Route'})
+  });
+
 let server = app.listen(process.env.PORT || 3000); // this will use one method inside of app (express()) and this will listen on the port 3000;
 
 app.use(express.static('public')); // this will host public folder as the static website
@@ -7,7 +13,7 @@ console.log('my socket server is running');
 
 let socket = require('socket.io',{
     cors: {
-      origin: "https://example.com",
+      origin: "https://multi-drawing-tool.herokuapp.com",
       methods: ["GET", "POST"],
       allowedHeaders: ["my-custom-header"],
       credentials: true
