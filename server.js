@@ -5,7 +5,14 @@ let server = app.listen(process.env.PORT || 3000); // this will use one method i
 app.use(express.static('public')); // this will host public folder as the static website
 console.log('my socket server is running');
 
-let socket = require('socket.io'); // require socket
+let socket = require('socket.io',{
+    cors: {
+      origin: "https://example.com",
+      methods: ["GET", "POST"],
+      allowedHeaders: ["my-custom-header"],
+      credentials: true
+    }
+  }); // require socket
 let io = socket(server);
 io.sockets.on('connection',(socket)=>{
     console.log('new connection!' + socket.id);

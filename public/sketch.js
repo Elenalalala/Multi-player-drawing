@@ -16,7 +16,12 @@ function setup() {
 
   layer = createGraphics(windowWidth,windowHeight);
 
-  socket = io.connect('http://localhost:3000');
+  socket = io.connect('http://localhost:3000', {
+    withCredentials: true,
+    extraHeaders: {
+      "my-custom-header": "drawingtoolheader"
+    }
+  });
   socket.on('mouse',newDrawing);
   socket.on('user', newUserPointer);
 }
