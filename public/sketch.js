@@ -15,7 +15,7 @@ function setup() {
   pointerSize = random(20,50);
 
   layer = createGraphics(windowWidth,windowHeight);
-
+//reference resource: https://socket.io/docs/v3/handling-cors/#Configuration
   socket = io.connect('https://multi-drawing-tool.herokuapp.com', {
     withCredentials: true,
     extraHeaders: {
